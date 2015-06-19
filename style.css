@@ -1,0 +1,24 @@
+#register {
+	display: inline-block;
+	vertical-align: top;
+}
+#login {
+	display: inline-block;
+	vertical-align: top;
+	margin-left: 100px;
+}
+#log_off {
+	display: inline-block;
+	margin-left: 300px;
+	margin-top: 50px;
+}
+	span.error {
+		color: red;
+	}
+	span.success {
+		color: green;
+	}
+	label {
+		display: block;
+		margin-bottom: 10px;
+	}
