@@ -7,7 +7,7 @@ require('connection.php');
 <head>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="style.css">
-	<title>Login and Registration</title>
+	<title>Coding Dojo Wall Login and Registration</title>
 </head>
 <body>
 	<div id="register">
@@ -93,15 +93,6 @@ require('connection.php');
 				} 
 			 ?>
 		</form>
-	</div>
-	<div id="log_off">
-		<?php
-			if(isset($_SESSION['log_off']))
-			{
-				echo "<span class='error'>".$_SESSION['log_off']."</span>";
-				unset($_SESSION['log_off']);
-			} 
-		 ?>
 	</div>
 </body>
 </html>

@@ -80,7 +80,7 @@ function login_user($post) // just a parameter called post
 		$_SESSION['user_id'] = $user[0]['id'];
 		$_SESSION['first_name'] = $user[0]['first_name'];
 		$_SESSION['logged_in'] = TRUE;
-		header('location: success.php');
+		header('location: main.php');
 	}
 	else
 	{
