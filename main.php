@@ -54,7 +54,7 @@
 				{
 					foreach ($_SESSION['comment_feed'] as $comment) {
 						if($comment['message_id'] == $message['id']) {
-						echo $comment['first_name']." ".$comment['last_name']."- ".date('F jS Y', strtotime($comment['created_at']))."<br><span class='comments'><p>".$comment['comment']. "</p></span><br>";
+						echo "<span class='comment_name'><p>".$comment['first_name']." ".$comment['last_name']."- ".date('F jS Y', strtotime($comment['created_at']))."</p></span><br><span class='comments'><p>".$comment['comment']. "</p></span><br>";
 						}
 					}
 				} ?>

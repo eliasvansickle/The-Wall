@@ -245,9 +245,13 @@ textarea
 }
 span.comments p
 {
-    font-size: 12px;
+    font-size: 10px;
 
     margin-left: 50px;
 
     color: green;
+}
+span.comment_name p 
+{
+    font-size: 12px;
 }
