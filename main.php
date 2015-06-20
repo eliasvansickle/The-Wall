@@ -5,8 +5,9 @@
 	$query_message_data = "SELECT * FROM users JOIN messages ON users.id = messages.user_id ORDER BY messages.created_at DESC";
 	$_SESSION['message_feed'] = fetch($query_message_data);
 
-	// $query_comment_data = "SELECT * FROM users JOIN comments ON user.id = comments.user_id WHERE ";
-	// $_SESSION['comment_feed'] = fetch($query_comment_data);
+	$query_comment_data = "SELECT * FROM messages JOIN comments ON messages.user_id = comments.user_id";
+
+	$_SESSION['comment_feed'] = fetch($query_comment_data);
 
 ?>
 <!DOCTYPE html>
@@ -48,6 +49,9 @@
 					echo "<div class='message_feed'><p>".$message['first_name']." ".$message['last_name']."- ".date('F jS Y', strtotime($message['created_at']))."</p><br>".$message['message']."</div>";			
 			 ?>
 			<div id='comment'>
+				<?php  
+
+				?>
 			<?php  
 				echo "
 				<form action='process.php' method='post'>
@@ -56,18 +60,14 @@
 					</label>
 					<label id='post_comment'>
 						<input type='hidden' name='action' value='submit_comment'>
+						<input type='hidden' name='message_id' value='".$message['id']."'>
 						<input type='submit' value='Post A Comment'>
 					</label>
 				</form>";
 				}
 			}
 			 ?>
-		</div>
-
-
-
-
-
+			</div>
 		</div>
 	</div>
 </body>
