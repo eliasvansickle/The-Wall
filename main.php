@@ -5,10 +5,9 @@
 	$query_message_data = "SELECT * FROM users JOIN messages ON users.id = messages.user_id ORDER BY messages.created_at DESC";
 	$_SESSION['message_feed'] = fetch($query_message_data);
 
-	$query_comment_data = "SELECT * FROM messages JOIN comments ON messages.user_id = comments.user_id";
+	$query_comment_data = "SELECT * FROM messages JOIN comments ON messages.id = comments.message_id";
 
 	$_SESSION['comment_feed'] = fetch($query_comment_data);
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,7 +30,7 @@
 		 	</form>
 		</div>
 		<div id="message">
-			<h2>Post a message</h2>
+			<h2>Message Board</h2>
 			<form action="process.php" method="post">
 				<label>
 					<textarea rows="5" cols="75" name="message" placeholder="Write your message here!"></textarea>
@@ -46,27 +45,35 @@
 			<?php
 			if(isset($_SESSION['message_feed']) && !empty($_SESSION['message_feed'])) {
 				foreach ($_SESSION['message_feed'] as $message) {
-					echo "<div class='message_feed'><p>".$message['first_name']." ".$message['last_name']."- ".date('F jS Y', strtotime($message['created_at']))."</p><br>".$message['message']."</div>";			
+					echo "<div class='message_feed'><p>".$message['first_name']." ".$message['last_name']."- ".date('F jS Y', strtotime($message['created_at']))."</p><br>".$message['message']."</div>";	
+					// var_dump($message);
+					// die();		
 			 ?>
 			<div id='comment'>
-				<?php  
+				<?php if(isset($_SESSION['comment_feed']))
+				{
+					foreach ($_SESSION['comment_feed'] as $comment) {
+						if($comment['message_id'] == $message['id']) {
 
-				?>
-			<?php  
-				echo "
-				<form action='process.php' method='post'>
-					<label>
-						<textarea rows='3' cols='75' name='comment' placeholder='Write your comment here!'></textarea>
-					</label>
-					<label id='post_comment'>
-						<input type='hidden' name='action' value='submit_comment'>
-						<input type='hidden' name='message_id' value='".$message['id']."'>
-						<input type='submit' value='Post A Comment'>
-					</label>
-				</form>";
+						echo "<span class='comments'><p>".$comment['comment']. "</p></span><br>";
+						}
+					}
+				} ?>
+				<?php  
+					echo "
+					<form action='process.php' method='post'>
+						<label>
+							<textarea rows='1' cols='75' name='comment' placeholder='Write your comment here!'></textarea>
+						</label>
+						<label id='post_comment'>
+							<input type='hidden' name='action' value='submit_comment'>
+							<input type='hidden' name='message_id' value='".$message['id']."'>
+							<input type='submit' value='Post A Comment'>
+						</label>
+					</form>";
+					}
 				}
-			}
-			 ?>
+				?>
 			</div>
 		</div>
 	</div>

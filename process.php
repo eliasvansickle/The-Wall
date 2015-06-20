@@ -108,14 +108,11 @@ function message($post)
 }
 function comment($post)
 {
-	// var_dump($post['message_id']);
-	$query_message = "INSERT INTO comments (message_id, user_id, comment, created_at, updated_at) VAlUES ('{$post['message_id']}', {$_SESSION['user_id']}, '{$post['comment']}', NOW(), NOW())";
+	$query_comment = "INSERT INTO comments (message_id, user_id, comment, created_at, updated_at) VAlUES ('{$post['message_id']}', {$_SESSION['user_id']}, '{$post['comment']}', NOW(), NOW())";
 
-	// var_dump($query_message);
-	run_mysql_query($query_message);
+	run_mysql_query($query_comment);
 	
 	header("location: main.php");
-
 }
  ?>
 
