@@ -8,7 +8,6 @@ if(isset($_POST['action']) && $_POST['action'] == 'register')
 	//call to function
 	register_user($_POST); //uses actual $_POST
 }
-
 if(isset($_POST['action']) && $_POST['action'] == 'login') 
 {
 	//call to function
@@ -22,7 +21,11 @@ if(isset($_POST['action']) && $_POST['action'] == 'log_off')
 	header('location:index.php');
 	die();
 }
-
+if(isset($_POST['action']) && $_POST['action'] == 'submit_message') 
+{
+	//call to function
+	message($_POST); //uses actual $_POST
+}
 function register_user($post) // just a parameter called post 
 {
 	////////START OF VALIDATION CHECKS////////
@@ -88,6 +91,22 @@ function login_user($post) // just a parameter called post
 		header("location: index.php");
 		die();
 	}
+}
+
+function message($post)
+{
+	$query_message = "INSERT INTO messages (user_id, message, created_at, updated_at) VAlUES ({$_SESSION['user_id']}, '{$post['message']}', NOW(), NOW())";
+
+	run_mysql_query($query_message);
+
+	$query_comment = "INSERT INTO comments (message_id, user_id, comment, created_at, updated_at) VALUES ('{$post['message_id']}', '{$post['user_id']}', '{$post['comment']}', NOW(), NOW())";
+
+	var_dump($query_comment);
+	// run_mysql_query($query_comment);
+
+	header("location: main.php");
+
+
 }
  ?>
 

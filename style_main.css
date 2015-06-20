@@ -81,6 +81,12 @@ html {
 	 		margin: 0 auto;
 	 		margin-top: 20px;
 	 	}
+	 	#message input {
+	 		background-color: blue;
+	 		border: solid black;
+	 		border-radius: 20px;
+	 		color:white;
+	 	}
 	 	#post_message {
 	 		margin-left: 315px;
 	 	}
@@ -88,6 +94,41 @@ html {
 	 		margin-top: 10px;
 	 		overflow: scroll;
 	 	}
+	 	div.message_feed {
+	 		width: 430px;
+	 		min-height: 50px;
+	 		margin: 0 auto;
+	 		margin-bottom: 10px;
+	 		margin-top: 10px;
+	 		/*border: 1px solid black;*/
+	 		overflow: scroll;
+	 		word-wrap: break-word;
+	 	}
+		input #comment {
+	 		width: 100px;
+	 	}
+	 	#comment {
+	 		width: 430px;
+	 		margin: 0 auto;
+	 		margin-top: 20px;
+	 	}
+	 	#post_comment {
+	 		margin-left: 315px;
+	 	}
+	 	textarea {
+	 		margin-top: 10px;
+	 		overflow: scroll;
+	 	}
+	 	/*div.comment_feed {
+	 		width: 550px;
+	 		min-height: 50px;
+	 		margin: 0 auto;
+	 		margin-bottom: 10px;
+	 		margin-top: 10px;
+	 		border-bottom: 2px solid black;
+	 		overflow: scroll;
+	 		word-wrap: break-word;
+	 	}*/
 
 
 
